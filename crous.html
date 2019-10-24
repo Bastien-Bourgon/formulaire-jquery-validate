@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+
+    <p>Inscription au Crous</p>
+    <form id="civilite" method="post">
+    Civilité:
+    <div>
+        <input type="radio" name="civ" value="H" checked />
+        <label for="H">Homme</label>
+    </div>
+    <div>
+        <input type="radio" name="civ" value="F" />
+        <label for="F">Femme</label>
+    </div>
+    <br>
+    Nom: <input type="text" name="nom" id="nom" placeholder=""  /><br><br>
+    Prenom: <input type="text" name="prenom" id="prenom" placeholder=""  /><br><br>
+    Date de naissance: <input type="date" name="ddn" id="ddn" placeholder=""  /><br><br>
+    Numéro Sécurité Sociale: <input type="number" name="nss" placeholder="" id="nss"  /><br><br>
+	IBAN: <input type="text" name="iban" placeholder="" id="iban"  /><br><br>
+    Mail: <input type="email" name="email" id="email" placeholder=""  /><br><br>
+    Téléphone: <input type="number" name="phonenumber" id="phonenumber" placeholder=""  /><br><br>
+    Département: <input type="number" name="departement" id="departement" placeholder=""  /><br><br>
+	Adresse: <input type="text" name="home" id="home" placeholder=""  /><br><br>
+	Code Postal: <input type="number" name="codepostal" id="codepostal" placeholder=""  /><br><br>
+	Valider: <input type="submit" value="Validate!"> 
+	</form>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="http://cdn.jsdelivr.net/jquery.validation/1.14.0/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/additional-methods.js"></script>
+<script>
+$().ready(function() {
+  $("#civilite").validate({
+  rules : {
+    prenom : {
+      required : true,
+	  minlength : 3,
+	  lettersonly: true,
+    },
+    nom : {
+	required: true,
+    minlength : 3,
+	lettersonly: true,
+    },	
+	ddn:
+	{
+	required: true,
+	},
+	iban:
+	{
+	required: true,
+	},
+	nss:
+	{
+	required: true,
+	digits: true,
+	},
+	phonenumber:
+	{
+	required: true,
+	digits: true,
+	maxnumber: 10,
+	minnumber: 10,
+	},
+	departement:
+	{
+	required: true,
+	digits: true,
+	},
+	home:
+	{
+	required: true,
+	},
+    email : {
+      required : true,
+      mail : true
+    },
+	codepostal : {
+	required: true,
+	digits: true,
+	},
+  },
+  messages : {
+    prenom : "Veuillez fournir un prénom",
+    nom : "Veuillez fournir un nom",
+	ddn: "Veuillez saisir votre date de naissance",
+	nss: "Veuillez saisir votre numéro de sécurité sociale",
+	phonenumber: "Veuillez saisir un numéro de téléphone valide",
+	departement: "Veuillez saisir votre numéro de département",
+	home: "Veuillez saisir votre adresse",
+    email : "Veuillez saisir une adresse email valide",
+	codepostal : "Veuillez saisir un code postal",
+	iban: "Veuillez saisir votre IBAN"
+  }
+ });
+});  
+</script>
+</html>
