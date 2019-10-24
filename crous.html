@@ -25,7 +25,7 @@
     Numéro Sécurité Sociale: <input type="number" name="nss" placeholder="" id="nss"  /><br><br>
 	IBAN: <input type="text" name="iban" placeholder="" id="iban"  /><br><br>
     Mail: <input type="email" name="email" id="email" placeholder=""  /><br><br>
-    Téléphone: <input type="number" name="phonenumber" id="phonenumber" placeholder=""  /><br><br>
+    Téléphone: <input type="text" name="phonenumber" id="phonenumber" placeholder=""  /><br><br>
     Département: <input type="number" name="departement" id="departement" placeholder=""  /><br><br>
 	Adresse: <input type="text" name="home" id="home" placeholder=""  /><br><br>
 	Code Postal: <input type="number" name="codepostal" id="codepostal" placeholder=""  /><br><br>
@@ -66,8 +66,8 @@ $().ready(function() {
 	{
 	required: true,
 	digits: true,
-	maxnumber: 10,
-	minnumber: 10,
+	maxlength: 10,
+	minlength: 10,
 	},
 	departement:
 	{
@@ -80,7 +80,7 @@ $().ready(function() {
 	},
     email : {
       required : true,
-      mail : true
+      email : true
     },
 	codepostal : {
 	required: true,
@@ -88,17 +88,33 @@ $().ready(function() {
 	},
   },
   messages : {
-    prenom : "Veuillez fournir un prénom",
-    nom : "Veuillez fournir un nom",
+    prenom : 
+	{
+	required: "Veuillez fournir un prénom",
+	lettersonly: "Veuillez ne pas inclure de chiffres",
+	minlength: "Veuillez saisir au moins 3 caractères",
+	},
+    nom : 	
+	{required: "Veuillez fournir un nom",
+	lettersonly: "Veuillez ne pas inclure de chiffres",
+	minlength: "Veuillez saisir au moins 3 caractères",
+	},
 	ddn: "Veuillez saisir votre date de naissance",
 	nss: "Veuillez saisir votre numéro de sécurité sociale",
-	phonenumber: "Veuillez saisir un numéro de téléphone valide",
+	phonenumber:{required: "Veuillez saisir un numéro de téléphone",
+		minlength: "Veuillez saisir un numéro de téléphone valide",
+		maxlength: "Veuillez saisir un numéro de téléphone valide",
+		digits: "Veuillez saisir un numéro de téléphone valide",
+		},
 	departement: "Veuillez saisir votre numéro de département",
 	home: "Veuillez saisir votre adresse",
-    email : "Veuillez saisir une adresse email valide",
+    email : 
+	{required: "Veuillez saisir une adresse email",
+	email: "Veuillez respected le format suivant: nom@domaine.com",
+	},
 	codepostal : "Veuillez saisir un code postal",
 	iban: "Veuillez saisir votre IBAN"
-  }
+  },
  });
 });  
 </script>
